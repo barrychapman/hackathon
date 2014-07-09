@@ -6,12 +6,10 @@ class HomeController extends AppController {
 
     public function index( $param = null ) {
 
-
-
-
         $this->set(compact('response'));
 
     }
+
 
     public function geo() {
 
@@ -30,7 +28,28 @@ class HomeController extends AppController {
     }
 
 
-    public function tab_date() {
+    public function load() {
+
+        $layout = $this->Session->read('current_layout');
+
+        if (!$layout)
+            $layout = 'passenger';
+
+
+        $this->layout = $layout;
+
+        $this->setAction($layout);
+
+
+    }
+
+    public function driver() {
+
+
+
+    }
+
+    public function passenger() {
 
 
 

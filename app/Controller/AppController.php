@@ -32,7 +32,22 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array();
+    public $components = array('Session', 'Cookie');
+
+
+    public function beforeFilter() {
+
+
+        $this->loadModel('User');
+
+        $users = $this->User->find('all');
+
+        $this->set(compact('users'));
+
+        parent::beforeFilter();
+
+    }
+
 
 
 }
