@@ -34,6 +34,7 @@ class AppController extends Controller {
 
     public $components = array('Session', 'Cookie');
 
+    public $helpers = array('Time');
 
     public function beforeFilter() {
 

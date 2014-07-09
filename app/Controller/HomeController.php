@@ -36,9 +36,7 @@ class HomeController extends AppController {
             $layout = 'passenger';
 
 
-        $this->layout = $layout;
-
-        $this->setAction($layout);
+        $this->redirect('/' . strtolower($layout));
 
 
     }
