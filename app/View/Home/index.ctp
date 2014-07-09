@@ -56,7 +56,6 @@
         <a href="#page_driver_options" data-icon="gear" class="ui-btn-right" data-transition="slide">Options</a>
     </div>
 
-    <?php echo $this->element('Driver', array('jsonRequestsForDriver' => $jsonRequestsForDriver)); ?>
 
 </div>
 
@@ -69,7 +68,6 @@
     </div>
 
 
-    <?php echo $this->element('Passenger'); ?>
 
 
     <!-- /navbar -->
@@ -99,14 +97,3 @@
 </div>
 
 
-
-<script type="text/javascript">
-
-    $(document.body).on('click', '.click-nav', function(event) {
-
-        this.href = '/home/tab_date/' + $(this).data('date');
-
-    });
-
-
-</script>
