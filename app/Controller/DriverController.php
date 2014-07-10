@@ -78,7 +78,8 @@ class DriverController extends AppController {
                     'User.id' => $userId
                 ),
                 'contain' => array(
-                    'Office'
+                    'Office',
+                    'Car'
                 )
             )
         );

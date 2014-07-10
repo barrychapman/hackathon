@@ -231,9 +231,13 @@ class PassengerController extends AppController {
                 ),
                 'contain' => array(
                     'User',
-                    'Meeting',
+                    'Meeting' => array(
+                        'Location'
+                    ),
                     'Ride' => array(
-                        'Driver'
+                        'Driver' => array(
+                            'Office'
+                        )
                     )
                 )
             )

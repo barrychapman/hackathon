@@ -47,6 +47,25 @@ $this->set('backTarget', '/driver/calendar');
         <div class="row">
 
 
+            <div style="margin-left: 10px;float: left; clear: left; padding: 10px">
+
+                <p><strong>Your Car</strong></p>
+                <p>
+                    <?php echo $user['Car']['brand'] . ' - ' . $user['Car']['model']; ?>
+                </p>
+                <p>
+                    <img style="max-height: 46px;" src="/img/cars/<?php echo $user['Car']['icon']; ?>"/>
+                </p>
+
+            </div>
+        </div>
+
+        </fieldset>
+    <fieldset>
+        <div class="row">
+
+
+
             <?php if (!empty($meeting['Request'])): ?>
             <?php foreach($meeting['Request'] as $request): ?>
 

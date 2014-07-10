@@ -12,7 +12,7 @@
         <?php if (isset($backTarget)): ?>
             <a class="button leftButton" type="back" href="<?php echo $backTarget; ?>">Back</a>
         <?php endif; ?>
-        <a class="button blueButton" href="/switch/to/passenger">Passenger Page</a>
+        <a class="button blueButton" href="/switch/to/passenger">View Passenger Page</a>
     </div>
 
     <?php echo $this->Session->flash(); ?>

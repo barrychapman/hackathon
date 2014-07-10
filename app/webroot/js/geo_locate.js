@@ -105,7 +105,7 @@ function createMarker(count) {
 */
         randlat = getRandomPoint(52.446223, 52.446523);
         randlon = getRandomPoint(10.785519, 10.785819);
-        var pos=new google.maps.LatLng(randlat, randlon);
+        var pos = new google.maps.LatLng(randlat, randlon);
 
         var marker = new google.maps.Marker({
             position: pos,
@@ -116,6 +116,20 @@ function createMarker(count) {
         });
 
     }
+}
+
+function createMarkerSingle(points) {
+
+    var pos = new google.maps.LatLng(points.origin.lat, points.origin.lan);
+
+    var marker = new google.maps.Marker({
+        position: pos,
+        icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        animation:google.maps.Animation.BOUNCE,
+        map: map,
+        title:"You are here"
+    });
+
 }
 
 

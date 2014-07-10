@@ -22,6 +22,15 @@ class Car extends AppModel {
  *
  * @var array
  */
+
+    public $belongsTo = array(
+        'Driver' => array(
+            'className' => 'User',
+            'foreignKey' => 'user_id'
+        )
+    );
+
+
 	public $hasMany = array(
 		'Ride' => array(
 			'className' => 'Ride',

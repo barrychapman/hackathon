@@ -16,7 +16,7 @@
     <a class="button leftButton" type="back" href="<?php echo $backTarget; ?>">Back</a>
     <?php endif; ?>
 
-    <a class="button blueButton" href="/switch/to/driver">Driver Page</a>
+    <a class="button blueButton" href="/switch/to/driver">View Driver Page</a>
 </div>
 
 <?php echo $this->Session->flash(); ?>
