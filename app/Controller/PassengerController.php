@@ -69,6 +69,21 @@ class PassengerController extends AppController {
 
     public function meeting($meetingId) {
 
+        $userId = $this->Session->read('LoggedInUser.User.id');
+
+        $user = $this->User->find(
+            'first',
+            array(
+                'conditions' => array(
+                    'User.id' => $userId
+                ),
+                'contain' => array(
+                    'Office'
+                )
+            )
+        );
+
+
         $meeting = $this->Meeting->find(
             'first',
             array(
@@ -76,6 +91,12 @@ class PassengerController extends AppController {
                     'Meeting.id' => $meetingId
                 ),
                 'contain' => array(
+                    'Request' => array(
+                        'conditions' => array(
+                            'Request.meeting_id' => $meetingId,
+                            'Request.status' => 'OPEN'
+                        )
+                    ),
                     'Location' => array(
                         'Area'
                     ),
@@ -86,7 +107,7 @@ class PassengerController extends AppController {
             )
         );
 
-        $this->set(compact('meeting'));
+        $this->set(compact('meeting', 'user'));
 
     }
 
@@ -124,8 +145,6 @@ class PassengerController extends AppController {
 
             $this->loadModel('Route');
 
-            debug($this->Session->read('LoggedInUser.User'));
-
             $route = $this->Route->find(
                 'first',
                 array(
@@ -156,7 +175,7 @@ class PassengerController extends AppController {
             $save = array(
                 'Request' => array(
                     'desc' => 'Request for ride',
-                    'pass_id' => $userId,
+                    'user_id' => $userId,
                     'meeting_id' => $meeting['Meeting']['id'],
                     'arrival_time' => $meeting['Meeting']['time'],
                     'status' => 'OPEN',
@@ -167,7 +186,6 @@ class PassengerController extends AppController {
             $this->Request->save($save);
             $this->Session->setFlash('Your route request has been submitted');
             $this->redirect('/passenger/events');
-
 
         }
 
@@ -198,6 +216,29 @@ class PassengerController extends AppController {
 
     }
 
+    public function event($requestId) {
+
+        $userId = $this->Session->read('LoggedInUser.User.id');
+
+        $event = $this->User->Request->find(
+            'first',
+            array(
+                'conditions' => array(
+                    'Request.user_id' => $userId,
+                    'Request.id' => $requestId,
+                    'Request.status' => array('OPEN','ACCEPTED')
+                ),
+                'contain' => array(
+                    'User',
+                    'Meeting'
+                )
+            )
+        );
+
+        $this->set(compact('event'));
+
+    }
+
     public function events() {
 
         $userId = $this->Session->read('LoggedInUser.User.id');
@@ -217,6 +258,31 @@ class PassengerController extends AppController {
         );
 
         $this->set(compact('events'));
+
+    }
+
+    public function cancel($requestId) {
+        $userId = $this->Session->read('LoggedInUser.User.id');
+
+
+        $request = $this->Request->find(
+            'first',
+            array(
+                'conditions' => array(
+                    'Request.id' => $requestId,
+                    'Request.user_id' => $userId
+                ),
+                'contain' => false
+            )
+        );
+
+        $request['Request']['status'] = 'CANCELLED';
+
+        unset($request['Request']['created'], $request['Request']['modified']);
+
+        $this->Request->save($request);
+
+        $this->redirect('/passenger/calendar');
 
     }
 

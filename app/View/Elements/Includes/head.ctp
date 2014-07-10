@@ -19,6 +19,7 @@
             return false;
         });
     }, 500);
+
 </script>
 
 <script type="text/javascript" src="/logic.css"></script>

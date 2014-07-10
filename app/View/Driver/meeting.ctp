@@ -1,6 +1,6 @@
 <?php
 
-    $this->set('backTarget', '/passenger/calendar');
+$this->set('backTarget', '/passenger/calendar');
 
 ?>
 <script type="text/javascript">
@@ -46,30 +46,34 @@
     <fieldset>
         <div class="row">
 
-            <strong style="padding: 10px; margin-top: 10px;float: left;">Attendees</strong>
+
+            <?php if (!empty($meeting['Request'])): ?>
+            <?php foreach($meeting['Request'] as $request): ?>
+
+                <div style="margin-left: 10px;float: left; clear: left; padding: 10px">
 
 
+                    <a style="float: left; margin-right: 15px; margin-top: -5px; position: relative; padding: 3px; font-size: .85em; line-height: 12px; height: 16px; border-width: 1px; " class="button blueButton" href="#">
+                        Approve Request
+                    </a>
 
-        <?php foreach($meeting['MeetingUser'] as $user): ?>
+                    <img width="32" height="32" style="float: left; width: 32px; height: 32px;" alt="" src="/img/muppets/<?php echo $request['User']['icon']; ?>">
+                    <span style="display: inline-block; float: left; padding: 4px 5px 4px 10px;"><?php echo $request['User']['name']; ?></span>
+                    <span style="color: #aaa; display: inline-block; float: left; padding: 4px 0;">
+                        - Traveling from <?php echo $request['User']['Office']['name']; ?>
+                    </span>
 
+
+                </div>
+
+            <?php endforeach; ?>
+            <?php else: ?>
             <div style="margin-left: 10px;float: left; clear: left; padding: 10px">
-                <img width="32" height="32" style="float: left; width: 32px; height: 32px;" alt="" src="/img/muppets/<?php echo $user['User']['icon']; ?>">
-                <span style="display: inline-block; float: left; padding: 4px 0 4px 10px;"><?php echo $user['User']['name']; ?></span>
 
-
-
-
-
+                <p>No Requested Pickups for this Meeting</p>
 
             </div>
-
-        <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </fieldset>
-
-    <?php if (!empty($meeting['Request'])): ?>
-        <a class="redButton" href="/passenger/cancel/<?php echo $meeting['Request'][0]['id']; ?>">Cancel Request</a>
-    <?php else: ?>
-        <a class="whiteButton" href="/passenger/request/<?php echo $meeting['Meeting']['id']; ?>">Request a Ride</a>
-    <?php endif; ?>
 </div>

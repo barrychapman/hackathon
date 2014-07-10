@@ -12,6 +12,10 @@ class Meeting extends AppModel {
         'MeetingUser' => array(
             'className' => 'MeetingUser',
             'foreignKey' => 'meeting_id'
+        ),
+        'Request' => array(
+            'className' => 'Request',
+            'foreignKey' => 'meeting_id'
         )
     );
 
