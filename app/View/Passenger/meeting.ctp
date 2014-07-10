@@ -18,8 +18,11 @@
                 <?php echo $meeting['Location']['name']; ?>
             </p>
 
-
-
+            <script type="text/javascript">
+                var points = <?php echo $param0; ?>;
+                $(function(){createMarker(points);});
+            </script>
+            <div id="map" style="width:250px; height:150px"></div>
 
 
         </div>
@@ -30,11 +33,19 @@
 
             <strong style="padding: 10px; margin-top: 10px;float: left;">Attendees</strong>
 
+
+
         <?php foreach($meeting['MeetingUser'] as $user): ?>
 
             <div style="margin-left: 10px;float: left; clear: left; padding: 10px">
                 <img width="32" height="32" style="float: left; width: 32px; height: 32px;" alt="" src="/img/muppets/<?php echo $user['User']['icon']; ?>">
                 <span style="display: inline-block; float: left; padding: 4px 0 4px 10px;"><?php echo $user['User']['name']; ?></span>
+
+
+
+
+
+
             </div>
 
         <?php endforeach; ?>
