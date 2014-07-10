@@ -23,7 +23,6 @@
 </script>
 
 <script type="text/javascript" src="/logic.css"></script>
-<meta http-equiv="refresh" content="500">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

@@ -20,5 +20,10 @@ class User extends AppModel {
         )
     );
 
-
+    public $hasOne = array(
+        'Car' => array(
+            'className' => 'Car',
+            'foreignKey' => 'user_id'
+        )
+    );
 }

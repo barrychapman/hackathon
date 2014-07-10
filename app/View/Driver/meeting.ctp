@@ -1,6 +1,6 @@
 <?php
 
-$this->set('backTarget', '/passenger/calendar');
+$this->set('backTarget', '/driver/calendar');
 
 ?>
 <script type="text/javascript">
@@ -52,10 +52,21 @@ $this->set('backTarget', '/passenger/calendar');
 
                 <div style="margin-left: 10px;float: left; clear: left; padding: 10px">
 
+                    <?php if ($request['status'] === 'OFFERED'): ?>
 
-                    <a style="float: left; margin-right: 15px; margin-top: -5px; position: relative; padding: 3px; font-size: .85em; line-height: 12px; height: 16px; border-width: 1px; " class="button blueButton" href="#">
-                        Approve Request
-                    </a>
+                        <a style="float: left; margin-right: 15px; margin-top: -6px; position: relative; padding: 6px 8px; font-size: .85em; line-height: 12px; height: 16px; border-width: 1px; " class="button redButton" href="/driver/cancel_offer/<?php echo $request['ride_id']; ?>">
+                            Cancel Offer
+                        </a>
+
+                        <?php else: ?>
+
+                        <a style="float: left; margin-right: 15px; margin-top: -6px; position: relative; padding: 6px 8px; font-size: .85em; line-height: 12px; height: 16px; border-width: 1px; " class="button blueButton" href="/driver/offer/<?php echo $request['id']; ?>">
+                            Offer Ride
+                        </a>
+
+                    <?php endif; ?>
+
+
 
                     <img width="32" height="32" style="float: left; width: 32px; height: 32px;" alt="" src="/img/muppets/<?php echo $request['User']['icon']; ?>">
                     <span style="display: inline-block; float: left; padding: 4px 5px 4px 10px;"><?php echo $request['User']['name']; ?></span>

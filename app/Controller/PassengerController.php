@@ -183,6 +183,7 @@ class PassengerController extends AppController {
                 )
             );
 
+            $this->Request->create();
             $this->Request->save($save);
             $this->Session->setFlash('Your route request has been submitted');
             $this->redirect('/passenger/events');
@@ -226,11 +227,14 @@ class PassengerController extends AppController {
                 'conditions' => array(
                     'Request.user_id' => $userId,
                     'Request.id' => $requestId,
-                    'Request.status' => array('OPEN','ACCEPTED')
+                    'Request.status' => array('OPEN','ACCEPTED','OFFERED')
                 ),
                 'contain' => array(
                     'User',
-                    'Meeting'
+                    'Meeting',
+                    'Ride' => array(
+                        'Driver'
+                    )
                 )
             )
         );
@@ -248,11 +252,13 @@ class PassengerController extends AppController {
             array(
                 'conditions' => array(
                     'Request.user_id' => $userId,
-                    'Request.status' => 'OPEN'
+                    'Request.status' => array('OPEN','OFFERED')
                 ),
                 'contain' => array(
                     'User',
-                    'Meeting'
+                    'Meeting' => array(
+                        'order' => 'Meeting.time ASC'
+                    )
                 )
             )
         );
@@ -280,6 +286,7 @@ class PassengerController extends AppController {
 
         unset($request['Request']['created'], $request['Request']['modified']);
 
+        $this->Request->id = $requestId;
         $this->Request->save($request);
 
         $this->redirect('/passenger/calendar');

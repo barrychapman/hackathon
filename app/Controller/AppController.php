@@ -42,14 +42,11 @@ class AppController extends Controller {
 
             if ($this->request->params['controller'] === 'user' && $this->request->params['action'] === 'select') {
 
-
             } else {
                 if (!$this->Session->check('LoggedInUser')) {
                     $this->redirect('/');
                 }
             }
-
-
         }
 
 

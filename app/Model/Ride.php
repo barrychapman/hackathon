@@ -41,7 +41,7 @@ class Ride extends AppModel {
 			'order' => ''
 		),
 		'Driver' => array(
-			'className' => 'Driver',
+			'className' => 'User',
 			'foreignKey' => 'driver_id',
 			'conditions' => '',
 			'fields' => '',

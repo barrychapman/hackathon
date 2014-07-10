@@ -22,12 +22,13 @@ $this->set('backTarget', '/passenger/events');
                 switch($event['Request']['status']) {
 
                     case 'OPEN':
-
                         echo $this->element('Passenger/Request/open', array('event' => $event));
                         break;
                     case 'ACCEPTED':
-
                         echo $this->element('Passenger/Request/accepted', array('event' => $event));
+                        break;
+                    case 'OFFERED':
+                        echo $this->element('Passenger/Request/offered', array('event' => $event));
                         break;
 
                 }
