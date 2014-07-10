@@ -26,16 +26,9 @@ class Request extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Pass' => array(
-			'className' => 'Pass',
-			'foreignKey' => 'pass_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Status' => array(
-			'className' => 'Status',
-			'foreignKey' => 'status_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -53,6 +46,10 @@ class Request extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+        'Meeting' => array(
+            'className' => 'Meeting',
+            'foreignKey' => 'meeting_id'
+        )
 	);
 }

@@ -8,7 +8,8 @@
 <div id="screen1" title="<?php echo $meeting['Meeting']['desc']; ?> Info" class="panel" selected="true">
     <fieldset style="padding: 10px;">
         <div class="row">
-            <p style="font-weight: bold;">
+            <p style="font-weight: bold; color: #000;"><?php echo $meeting['Meeting']['desc']; ?></p>
+            <p style="font-weight: bold; color: #333;">
                 <span style="color: #000;"><?php echo $this->Time->format('F j, Y, g:i a', $meeting['Meeting']['time']); ?></span><br/>
             </p>
         </div>
@@ -21,7 +22,7 @@
             <script type="text/javascript">
                 $(function(){
                     initialize_map();
-                    initialize("/img/muppets/6.png");
+                    initmap("/img/muppets/6.png");
                 });
                 var points = <?php echo count($meeting['MeetingUser']); ?>;
                 $(function(){createMarker(points);});
@@ -55,5 +56,7 @@
         <?php endforeach; ?>
         </div>
     </fieldset>
+
+    <a class="whiteButton" href="/passenger/request/<?php echo $meeting['Meeting']['id']; ?>">Request a Ride</a>
 
 </div>

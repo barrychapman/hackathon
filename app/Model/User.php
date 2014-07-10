@@ -6,6 +6,17 @@ class User extends AppModel {
         'MeetingUser' => array(
             'className' => 'MeetingUser',
             'foreignKey' => 'user_id'
+        ),
+        'Request' => array(
+            'className' => 'Request',
+            'foreignKey' => 'user_id'
+        )
+    );
+
+    public $belongsTo = array(
+        'Office' => array(
+            'className' => 'Location',
+            'foreignKey' => 'office_id'
         )
     );
 

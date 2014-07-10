@@ -23,9 +23,8 @@ function initialize_map()
 
 
 /*initi geo data selection */
-function initialize(img)
+function initmap(points, func, img)
 {
-
 // 	if(geo_position_js.init())
 // 	{
 // 		document.getElementById('current').innerHTML="Receiving...";
@@ -36,18 +35,22 @@ function initialize(img)
 // 		document.getElementById('current').innerHTML="Functionality not available";
 // 	}
 
-    show_position(img);
+    show_position(points, func, img);
 
 
 }
 
 /*show position in map*/
-function show_position(img)
+function show_position(points, func, img)
 {
 
     /*52.433466, 10.794749* mockup for hackathon*/
-    var lat = "52.446223";
-    var lan = "10.785519";
+
+    console.log(typeof points);
+    console.log(typeof points.origin);
+
+    var lat = points.origin.lat;
+    var lan = points.origin.lan;
 
 
 
@@ -73,7 +76,13 @@ function show_position(img)
         infowindow.open(map,marker);
     });
 
-    Route();
+    if (func === 'passenger') {
+        Route(points);
+    } else if (func === 'driver') {
+
+
+    }
+
 
 }
 
@@ -110,17 +119,13 @@ function createMarker(count) {
 }
 
 
-function Route() {
-
-    var lat = "52.446223";
-    var lan = "10.785519";
-
+function Route(points) {
 
     /*receiving ending geo*/
-    var latend = "52.422536";
-    var lngend = "10.746965";
-    var start = new google.maps.LatLng(lat, lan);
-    var end = new google.maps.LatLng(latend, lngend);
+
+    var start = new google.maps.LatLng(points.origin.lat, points.origin.lan);
+    var end = new google.maps.LatLng(points.dest.lat, points.dest.lan);
+
     var request = {
         origin:start,
         destination:end,
@@ -133,6 +138,6 @@ function Route() {
     });
 
 }
-google.maps.event.addDomListener(window,'load',initialize);
+google.maps.event.addDomListener(window,'load');
 
 
