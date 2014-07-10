@@ -13,4 +13,19 @@ class Location extends AppModel {
  */
 	public $displayField = 'name';
 
+    public $hasMany = array(
+        'Meeting' => array(
+            'className' => 'Meeting',
+            'foreignKey' => 'location_id'
+        )
+    );
+
+    public $belongsTo = array(
+        'Area' => array(
+            'className' => 'Area',
+            'foreignKey' => 'area_id'
+        )
+    );
+
+
 }

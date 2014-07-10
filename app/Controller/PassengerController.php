@@ -16,6 +16,8 @@ class PassengerController extends AppController {
 
         $this->layout = $layout;
 
+        parent::beforeFilter();
+
     }
 
     public function index() {
@@ -73,6 +75,9 @@ class PassengerController extends AppController {
                     'Meeting.id' => $meetingId
                 ),
                 'contain' => array(
+                    'Location' => array(
+                        'Area'
+                    ),
                     'MeetingUser' => array(
                         'User'
                     )

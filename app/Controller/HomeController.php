@@ -27,6 +27,12 @@ class HomeController extends AppController {
 
     }
 
+    public function logout() {
+
+        $this->Session->destroy();
+        $this->redirect('/');
+
+    }
 
     public function load() {
 

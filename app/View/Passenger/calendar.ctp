@@ -39,4 +39,8 @@
 
 
 <?php endforeach; ?>
+    <li class="group">Application Options</li>
+    <li>
+        <a href="/logout">Log Out</a>
+    </li>
 </ul>

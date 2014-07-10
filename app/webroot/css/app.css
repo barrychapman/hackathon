@@ -6,3 +6,7 @@
     color: #777;
     font-weight: normal;
 }
+
+a:active span {
+    color: #fff !important;
+}
