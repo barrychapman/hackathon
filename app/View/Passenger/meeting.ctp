@@ -19,10 +19,14 @@
             </p>
 
             <script type="text/javascript">
-                var points = <?php echo $param0; ?>;
+                $(function(){
+                    initialize_map();
+                    initialize("/img/muppets/6.png");
+                });
+                var points = <?php echo count($meeting['MeetingUser']); ?>;
                 $(function(){createMarker(points);});
             </script>
-            <div id="map" style="width:250px; height:150px"></div>
+            <div id="map" style="width:100%; height:220px"></div>
 
 
         </div>

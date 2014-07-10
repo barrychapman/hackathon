@@ -9,11 +9,12 @@ function initialize_map()
     directionsDisplay = new google.maps.DirectionsRenderer();
     var myOptions = {
         zoom: 19,
-        mapTypeControl: true,
+        mapTypeControl: false,
+        streetViewControl: false,
         mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DEFAULT},
         navigationControl: true,
         navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-        mapTypeId: google.maps.MapTypeId.TERRAIN
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map"), myOptions);
 }
@@ -22,7 +23,7 @@ function initialize_map()
 
 
 /*initi geo data selection */
-function initialize()
+function initialize(img)
 {
 
 // 	if(geo_position_js.init())
@@ -35,13 +36,13 @@ function initialize()
 // 		document.getElementById('current').innerHTML="Functionality not available";
 // 	}
 
-    show_position();
+    show_position(img);
 
 
 }
 
 /*show position in map*/
-function show_position()
+function show_position(img)
 {
 
     /*52.433466, 10.794749* mockup for hackathon*/
@@ -57,7 +58,7 @@ function show_position()
     map.setZoom(19);
 
     var infowindow = new google.maps.InfoWindow({
-        content: "<strong>yes</strong>"
+        content: '<img src="'+img+'" />'
     });
 
     var marker = new google.maps.Marker({
@@ -82,6 +83,7 @@ function getRandomPoint(min, max) {
 
 
 function createMarker(count) {
+
     for (i = 0; i<count; i++) {
 
         /*52.422536, 10.746965*/
@@ -133,7 +135,4 @@ function Route() {
 }
 google.maps.event.addDomListener(window,'load',initialize);
 
-$(function(){
-    initialize_map();
-    initialize();
-});
+
