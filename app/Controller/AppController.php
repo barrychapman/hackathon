@@ -52,7 +52,12 @@ class AppController extends Controller {
 
         $this->loadModel('User');
 
-        $users = $this->User->find('all');
+        $users = $this->User->find(
+            'all',
+            array(
+                'order' => 'User.name ASC'
+            )
+        );
 
         $this->set(compact('users'));
 

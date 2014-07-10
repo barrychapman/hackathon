@@ -4,7 +4,7 @@ $this->set('backTarget', '/passenger/events');
 
 ?>
 
-<div id="screen1" title="Viewing Your Ride Request" class="panel" selected="true">
+<div id="screen1" title="Your Ride Request" class="panel" selected="true">
 
     <fieldset style="padding: 10px;">
         <div class="row">
@@ -38,7 +38,25 @@ $this->set('backTarget', '/passenger/events');
             </p>
 
         </div>
+
     </fieldset>
+
+
+    <?php
+
+    switch($event['Request']['status']) {
+
+
+        case 'ACCEPTED':
+            echo $this->element('Passenger/Request/accepted_map', array('event' => $event));
+            break;
+        case 'OFFERED':
+            echo $this->element('Passenger/Request/offered_map', array('event' => $event));
+            break;
+
+    }
+
+    ?>
 
     <a class="redButton" href="/passenger/cancel/<?php echo $event['Request']['id']; ?>">Cancel Request</a>
 

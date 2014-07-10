@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="/iui/iui.css" type="text/css" />
 <link rel="stylesheet" href="/iui/t/defaultgrad/defaultgrad-theme.css" type="text/css"/>
 <script type="application/x-javascript" src="/js/app.js"></script>
-<script type="application/x-javascript" src="/iui/iui.js"></script>
-
+<!--<script type="application/x-javascript" src="/iui/iui.js"></script>
+-->
 <script type="text/javascript">
 
     setTimeout(function() {

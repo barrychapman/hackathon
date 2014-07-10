@@ -114,7 +114,97 @@ class DriverController extends AppController {
 
     }
 
-    public function cancel_offer($rideId) {
+    public function ride($rideId) {
+
+        $userId = $this->Session->read('LoggedInUser.User.id');
+
+        $ride = $this->Ride->find(
+            'first',
+            array(
+                'conditions' => array(
+                    'Ride.driver_id' => $userId,
+                    'Ride.id' => $rideId
+                ),
+                'joins' => array(
+                    array(
+                        'table' => 'requests',
+                        'alias' => 'RequestFilter',
+                        'type'  => 'inner',
+                        'conditions' => array(
+                            'RequestFilter.ride_id = Ride.id',
+                            'RequestFilter.status' => 'OFFERED'
+                        )
+                    )
+                ),
+                'contain' => array(
+                    'Driver',
+                    'Request' => array(
+                        'User'
+                    ),
+                    'Route' => array(
+                        'Origin' => array(
+                            'Area'
+                        ),
+                        'Destination' => array(
+                            'Area'
+                        )
+                    )
+                )
+            )
+        );
+
+        $this->set(compact('ride'));
+
+
+    }
+
+    public function pickups() {
+
+        $userId = $this->Session->read('LoggedInUser.User.id');
+
+
+        $rides = $this->Ride->find(
+            'all',
+            array(
+                'conditions' => array(
+                    'Ride.driver_id' => $userId
+                ),
+                'joins' => array(
+                    array(
+                        'table' => 'requests',
+                        'alias' => 'RequestFilter',
+                        'type'  => 'inner',
+                        'conditions' => array(
+                            'RequestFilter.ride_id = Ride.id',
+                            'RequestFilter.status' => 'OFFERED'
+                        )
+                    )
+                ),
+                'contain' => array(
+                    'Driver',
+                    'Request' => array(
+                        'User'
+                    ),
+                    'Route' => array(
+                        'Origin' => array(
+                            'Area'
+                        ),
+                        'Destination' => array(
+                            'Area'
+                        )
+                    )
+                )
+            )
+        );
+
+
+
+        $this->set(compact('rides'));
+
+
+    }
+
+    public function cancel_offer($rideId, $page = null) {
 
         $ride = $this->Ride->find(
             'first',
@@ -128,13 +218,20 @@ class DriverController extends AppController {
             )
         );
 
+
         if ($ride) {
 
-            $this->Ride->delete($rideId);
+        //    $this->Ride->delete($rideId);
+
+            if (!array_key_exists(0, $ride['Request'])) {
+                debug($ride);
+                die;
+            }
 
             $request = array(
-                'Request' => $ride['Request']
+                'Request' => $ride['Request'][0]
             );
+
 
             $request['Request']['status'] = 'OPEN';
             $request['Request']['ride_id'] = NULL;
@@ -142,7 +239,12 @@ class DriverController extends AppController {
             $this->Request->id = $request['Request']['id'];
             $this->Request->save($request);
 
-            $this->redirect('/driver/meeting/' . $request['Request']['meeting_id']);
+            if ($page) {
+                $this->redirect('/driver/' . $page);
+            } else {
+                $this->redirect('/driver/meeting/' . $request['Request']['meeting_id']);
+            }
+
 
         } else {
 
@@ -155,12 +257,15 @@ class DriverController extends AppController {
                 )
             );
 
-
             $this->Request->id = $requests[0]['Request']['id'];
             $this->Request->saveField('ride_id', NULL);
             $this->Request->saveField('status', 'OPEN');
-            $this->redirect('/driver/meeting/' . $requests[0]['Request']['meeting_id']);
 
+            if ($page) {
+                $this->redirect('/driver/' . $page);
+            } else {
+                $this->redirect('/driver/meeting/' . $requests[0]['Request']['meeting_id']);
+            }
         }
 
 
@@ -224,11 +329,6 @@ class DriverController extends AppController {
 
             $this->redirect('/driver/meeting/' . $request['Meeting']['id']);
         }
-
-
-
-
-
     }
 
 
