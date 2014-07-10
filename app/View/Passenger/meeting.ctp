@@ -17,6 +17,11 @@
                 <strong><?php echo $meeting['Location']['Area']['name']; ?></strong><br/>
                 <?php echo $meeting['Location']['name']; ?>
             </p>
+
+
+
+
+
         </div>
     </fieldset>
 
