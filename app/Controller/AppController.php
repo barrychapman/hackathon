@@ -38,6 +38,20 @@ class AppController extends Controller {
 
     public function beforeFilter() {
 
+        if ($this->request->params['controller'] !== 'home' && $this->request->params['action'] !== 'index') {
+
+            if ($this->request->params['controller'] === 'user' && $this->request->params['action'] === 'select') {
+
+
+            } else {
+                if (!$this->Session->check('LoggedInUser')) {
+                    $this->redirect('/');
+                }
+            }
+
+
+        }
+
 
         $this->loadModel('User');
 

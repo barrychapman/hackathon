@@ -6,7 +6,7 @@ class HomeController extends AppController {
 
     public function index( $param = null ) {
 
-        $this->set(compact('response'));
+
 
     }
 
