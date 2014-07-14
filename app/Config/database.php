@@ -68,7 +68,7 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '192.168.229.144',
+		'host' => '192.168.1.68',
 		'login' => 'hack',
 		'password' => 'hack',
 		'database' => 'hackathon',

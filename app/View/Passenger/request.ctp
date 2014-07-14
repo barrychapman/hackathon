@@ -60,7 +60,7 @@
     <fieldset>
         <div class="row">
 
-            <div id="map" style="width:100%; height:220px"></div>
+            <div id="map" style="width:100%; height:260px"></div>
 
 
         </div>

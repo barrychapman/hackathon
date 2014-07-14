@@ -37,7 +37,7 @@ $this->set('backTarget', '/driver/calendar');
                 <?php echo $meeting['Location']['name']; ?>
             </p>
 
-            <div id="map" style="width:100%; height:220px"></div>
+            <div id="map" style="width:100%; height:260px"></div>
 
 
         </div>
