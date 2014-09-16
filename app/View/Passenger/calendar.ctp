@@ -41,7 +41,10 @@
 <?php endforeach; ?>
     <li class="group">Application Options</li>
     <li>
-        <a href="/passenger/events">Your Requests</a>
+        <a href="/passenger/events">My Requests</a>
+    </li>
+    <li>
+        <a href="/passenger/profile">My Passenger Profile</a>
     </li>
     <li>
         <a href="/logout">Log Out</a>

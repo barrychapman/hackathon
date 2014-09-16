@@ -1,3 +1,8 @@
+* {
+    font-size: 0.95em;
+
+}
+
 .meeting-time {
     color: #333;
     font-weight: bold;
@@ -9,4 +14,90 @@
 
 a:active span {
     color: #fff !important;
+}
+
+fieldset h1 {
+    color: #333;
+    font-weight: bold;
+    border-bottom: 1px dotted #555;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+
+label.label-element {
+    font-weight: bold;
+    color: #000;
+    display: block;
+    margin-bottom: 4px;
+}
+
+input.form-field {
+    padding: 7px !important;
+    margin: 5px 10px !important;
+    clear: left;
+    width: 90% !important;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    display: block !important;
+    border: 1px solid #777;
+}
+
+div.radio-container {
+    margin-bottom: 20px;
+}
+
+div.radio-container label {
+    float: left;
+}
+div.radio-container input {
+    float: left; clear: left;
+}
+
+
+
+
+
+
+input[type="text"], textarea {
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    height: 26px !important;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+    padding: 9px !important;
+    border: solid 1px #E5E5E5;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+    background: #FFFFFF;
+    margin-bottom: 10px !important;
+}
+
+textarea {
+    width: 400px;
+    max-width: 400px;
+    height: 150px;
+    line-height: 150%;
+}
+
+input[type="text"]:hover, textarea:hover,
+input[type="text"]:focus, textarea:focus {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+    border-color: #C9C9C9;
+}
+
+.form label {
+    margin-left: 10px;
+    color: #999999;
+}
+
+.submit input {
+    width: auto;
+    padding: 9px 15px;
+    background: #617798;
+    border: 0;
+    font-size: 14px;
+    color: #FFFFFF;
 }

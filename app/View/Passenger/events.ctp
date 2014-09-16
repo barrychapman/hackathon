@@ -25,7 +25,17 @@
     </li>
 
     <?php endif; ?>
+    <li class="group">Route Options</li>
+
+    <li>
+        <a href="/passenger/daily">Daily Route (to/from work)</a>
+    </li>
+
     <li class="group">Application Options</li>
+
+    <li>
+        <a href="/passenger/profile">My Passenger Profile</a>
+    </li>
     <li>
         <a href="/logout">Log Out</a>
     </li>

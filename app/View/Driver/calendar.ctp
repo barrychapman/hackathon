@@ -41,7 +41,10 @@
     <?php endforeach; ?>
     <li class="group">Application Options</li>
     <li>
-        <a href="/driver/pickups">Your Pickups</a>
+        <a href="/driver/pickups">My Pickups</a>
+    </li>
+    <li>
+        <a href="/driver/profile">My Driver Profile</a>
     </li>
     <li>
         <a href="/logout">Log Out</a>

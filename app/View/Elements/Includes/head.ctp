@@ -1,10 +1,12 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php echo $this->Html->charset(); ?>
 
-<script src="/mobile/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+
 
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 <link rel="stylesheet" href="/css/app.css" type="text/css" />
+<link rel="stylesheet" href="/select2/select2.css" type="text/css" />
 <link rel="stylesheet" href="/iui/iui.css" type="text/css" />
 <link rel="stylesheet" href="/iui/t/defaultgrad/defaultgrad-theme.css" type="text/css"/>
 <script type="application/x-javascript" src="/js/app.js"></script>
@@ -22,11 +24,11 @@
 
 </script>
 
-<script type="text/javascript" src="/logic.css"></script>
+<!--<script type="text/javascript" src="/logic.css"></script>-->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- <script type="text/javascript" src="/logic.css"></script> -->
+<script type="text/javascript" src="/mobile/logic.js"></script>
 
 <style type="text/css">
     .ui-icon-driver:after {
@@ -52,11 +54,11 @@ echo $this->Html->script('jquery');
 echo $this->Html->script('jquery-ui.min');
 echo $this->Html->script('geo');
 echo $this->Html->script('geo_locate');
+echo $this->Html->script('/select2/select2');
 
 echo $this->Html->meta('icon');
 
 echo $this->fetch('meta');
 echo $this->fetch('css');
 echo $this->fetch('script');
-?>
 
